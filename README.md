@@ -1,4 +1,4 @@
-# Star Citizen Fleet Overview [PHP + MySQL]
+# Star Citizen Fleet Overview
 
 - - - - - - - - - -
 INSTALLATION
