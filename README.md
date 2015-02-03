@@ -1,4 +1,4 @@
-# Fleet Overview [PHP + MySQL]
+# Star Citizen Fleet Overview [PHP + MySQL]
 
 - - - - - - - - - -
 INSTALLATION
@@ -15,17 +15,3 @@ MODIFICATION
 If you want to edit the ship count:
 Connect to the database with your prefered MySQL tool like phpMyAdmin or else.
 Search the table for your ship and/or variant and edit the "quantity" field.
-
-- - - - - - - - - -
-CHANGELOG
-- - - - - - - - - -
-Will follow when the script got updated ;-)
-
-- - - - - - - - - -
-QUESTIONS
-- - - - - - - - - -
-RSI Thread: https://forums.robertsspaceindustries.com/discussion/228249/fleet-overview-php-mysql
-
-
-See you in the verse
-bergkuh
