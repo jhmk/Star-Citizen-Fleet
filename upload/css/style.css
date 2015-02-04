@@ -12,6 +12,8 @@ html, body {
 	background-image: -ms-linear-gradient(bottom, #1D4165 0%, #000000 100%);
 	background-image: linear-gradient(to bottom, #1D4165 0%, #000000 100%);
 	background-attachment: fixed;
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 #fleet {

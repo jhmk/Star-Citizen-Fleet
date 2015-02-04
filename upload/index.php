@@ -12,7 +12,7 @@
 <body>
 <div id="fleet">
 <?php
-$db = @new mysqli('localhost', 'root', '', 'star-citizen-fleet');
+$db = @new mysqli('localhost', 'root', 'root', 'star-citizen-fleet');
 if (mysqli_connect_errno() == 0) {
 	$ships = 'SELECT `ship`, SUM(`quantity`) `total` FROM `star-citizen-fleet` WHERE `quantity` != 0 GROUP BY `ship` ORDER BY `ship` ASC';
 	$ships = $db->query($ships);
