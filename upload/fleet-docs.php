@@ -1,17 +1,41 @@
 <?php
-function getCSV($file) {
-	$csv = fopen($file, 'r');
-	while (!feof($csv)) {
-		$parse[] = fgetcsv($csv, 1024);
+header('Content-type: application/json');
+$feed = 'https://docs.google.com/spreadsheets/d/1Id-2M68il1YTRRLqAulvnNiHexgetKtKeFqoaroZjqk/export?format=csv';
+
+$keys = array();
+$json = array();
+
+function csvArray($file, $delimiter) {
+	if (($handle = fopen($file, 'r')) !== FALSE) {
+		$i = 0;
+		while (($array = fgetcsv($handle, 4000, $delimiter, '"')) !== FALSE) {
+			for ($x = 0; $x < count($array); $x++) {
+				$arr[$i][$x] = $array[$x];
+			}
+			$i++;
+		}
+		fclose($handle);
 	}
-	fclose($csv);
-	return $parse;
+	return $arr;
 }
 
-$file = 'https://docs.google.com/spreadsheets/d/1Id-2M68il1YTRRLqAulvnNiHexgetKtKeFqoaroZjqk/export?format=csv';
-$csv = getCSV($file);
+$data = csvArray($feed, ',');
+$count = count($data) - 1;
 
-echo '<pre>';
-print_r($csv);
-echo '</pre>';
+$labels = array_shift($data);
+foreach ($labels as $label) {
+	$keys[] = $label;
+}
+$keys[] = 'id';
+
+for ($i = 0; $i < $count; $i++) {
+	$data[$i][] = $i;
+}
+
+for ($x = 0; $x < $count; $x++) {
+	$d = array_combine($keys, $data[$x]);
+	$json[$x] = $d;
+}
+
+echo json_encode($json);
 ?>
