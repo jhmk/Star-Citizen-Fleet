@@ -32,6 +32,18 @@ ul, li {
 	list-style: none;
 }
 
+#error {
+	margin: 10px;
+	padding: 20px 25px;
+	width: 250px;
+	text-align: center;
+	background: #ffcccc;
+	border: 1px solid #cc0000;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
 #ships {
 	clear: both;
 	width: 100%;
