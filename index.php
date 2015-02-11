@@ -126,9 +126,7 @@ if (($show == 'DOCS') && ($feed != '')) {
 		echo '</li>';
 	}
 	echo '</ul>';
-
 } else if (($show == 'MYSQL') && ($host != '') && ($user != '') && ($pass != '') && ($db_name != '') && ($tbl_name != '')) {
-
 	$db = @new mysqli($host, $user, $pass, $db_name);	
 	if (mysqli_connect_errno() == 0) {
 		echo '<ul id="ships">';
@@ -182,7 +180,6 @@ if (($show == 'DOCS') && ($feed != '')) {
 		echo '<div id="error"><strong>ERROR:</strong> ' .mysqli_connect_errno(). ' - ' .mysqli_connect_error(). '!</div>';
 	}
 	$db->close();
-	
 } else {
 	echo '<div id="error"><strong>ERROR:</strong> Please check your config file!</div>';
 }
