@@ -1,20 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.11
+-- version 4.2.10
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Erstellungszeit: 03. Feb 2015 um 23:56
--- Server Version: 5.6.21
--- PHP-Version: 5.6.3
+-- Host: localhost:3306
+-- Erstellungszeit: 11. Feb 2015 um 15:51
+-- Server Version: 5.5.38
+-- PHP-Version: 5.6.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
 
 --
 -- Datenbank: `star-citizen-fleet`
@@ -23,10 +17,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `star-citizen-fleet`
+-- Tabellenstruktur für Tabelle `sc_fleet`
 --
 
-CREATE TABLE IF NOT EXISTS `star-citizen-fleet` (
+CREATE TABLE `sc_fleet` (
 `id` int(5) NOT NULL,
   `ship` varchar(128) NOT NULL,
   `variant` varchar(128) NOT NULL DEFAULT 'NONE',
@@ -35,10 +29,10 @@ CREATE TABLE IF NOT EXISTS `star-citizen-fleet` (
 ) ENGINE=MyISAM AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
 
 --
--- Daten für Tabelle `star-citizen-fleet`
+-- Daten für Tabelle `sc_fleet`
 --
 
-INSERT INTO `star-citizen-fleet` (`id`, `ship`, `variant`, `quantity`, `price`) VALUES
+INSERT INTO `sc_fleet` (`id`, `ship`, `variant`, `quantity`, `price`) VALUES
 (1, 'M50', 'NONE', 2, 100),
 (2, 'Mustang', 'Alpha', 2, 30),
 (3, 'Mustang', 'Beta', 2, 40),
@@ -94,9 +88,9 @@ INSERT INTO `star-citizen-fleet` (`id`, `ship`, `variant`, `quantity`, `price`) 
 --
 
 --
--- Indizes für die Tabelle `star-citizen-fleet`
+-- Indizes für die Tabelle `sc_fleet`
 --
-ALTER TABLE `star-citizen-fleet`
+ALTER TABLE `sc_fleet`
  ADD PRIMARY KEY (`id`);
 
 --
@@ -104,10 +98,7 @@ ALTER TABLE `star-citizen-fleet`
 --
 
 --
--- AUTO_INCREMENT für Tabelle `star-citizen-fleet`
+-- AUTO_INCREMENT für Tabelle `sc_fleet`
 --
-ALTER TABLE `star-citizen-fleet`
+ALTER TABLE `sc_fleet`
 MODIFY `id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

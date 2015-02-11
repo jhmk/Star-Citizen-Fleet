@@ -1,5 +1,5 @@
 <?php
-$show = 'MYSQL'; /* Alternative: MYSQL */
+$show = 'DOCS'; /* Alternative: MYSQL */
 
 /* Settings for DOCS */
 
@@ -11,7 +11,7 @@ $host = 'localhost';
 $user = 'root';
 $pass = 'root';
 $db_name = 'star-citizen-fleet';
-$tbl_name = 'sc_fleet';
+$tbl_name = 'sc_fleet'; /* Please do not edit in first run */
 
 /* Some used texts */
 
