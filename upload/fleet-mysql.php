@@ -12,12 +12,13 @@
 <body>
 <div id="fleet">
 <?php
-$db = @new mysqli('localhost', 'root', '', 'star-citizen-fleet');
+require_once('admin/config.php');
+$db = @new mysqli($host, $user, $pass, $db_name);
 if (mysqli_connect_errno() == 0) {
-	$ships = 'SELECT `ship`, SUM(`quantity`) `total` FROM `star-citizen-fleet` WHERE `quantity` != 0 GROUP BY `ship` ORDER BY `ship` ASC';
+	$ships = 'SELECT `ship`, SUM(`quantity`) `total` FROM `' .$tbl_name.'` WHERE `quantity` != 0 GROUP BY `ship` ORDER BY `ship` ASC';
 	$ships = $db->query($ships);
 	echo '<ul id="ships">';	
-	$overall = 'SELECT SUM(`quantity`) quantity, SUM(`quantity` * `price`) amount FROM `star-citizen-fleet` WHERE `quantity` != 0';
+	$overall = 'SELECT SUM(`quantity`) quantity, SUM(`quantity` * `price`) amount FROM `' .$tbl_name.'` WHERE `quantity` != 0';
 	$overall = $db->query($overall);
 	while ($row = $overall->fetch_object()) {
 		echo '<li class="ship overall">';
@@ -37,7 +38,7 @@ if (mysqli_connect_errno() == 0) {
 		echo '<div class="overlay"></div>';
 		echo '<div class="title">';
 		echo '<span class="quantity">' .str_pad($row->total, 2, '0', STR_PAD_LEFT). '<span class="cross">x</span></span><span class="ship">' .$row->ship. '</span>';
-		$variants = 'SELECT `variant`, `quantity` FROM `star-citizen-fleet` WHERE `ship` = "' .$row->ship. '" AND `variant` != "NONE" ORDER BY `variant` ASC';
+		$variants = 'SELECT `variant`, `quantity` FROM `' .$tbl_name.'` WHERE `ship` = "' .$row->ship. '" AND `variant` != "NONE" ORDER BY `variant` ASC';
 		$variants = $db->query($variants);
 		if ($variants->num_rows >= 1) {
 			echo '<div class="info"></div>';		
