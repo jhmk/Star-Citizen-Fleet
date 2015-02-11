@@ -14,7 +14,7 @@ function ship_css($ship_name) {
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-	<title><?php echo $title. ' [' .$show. '-Version]'; ?></title>
+	<title><?php echo $title. ' [' .$show. '-Version]'; ?> BETAx</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
 	<link rel="shortcut icon" href="img/favicon.ico" />
 </head>
@@ -84,7 +84,7 @@ if (($show == 'DOCS') && ($feed != '')) {
 	}
 	$array = array_sort($array, 'ship', SORT_ASC);
 	echo '<ul id="ships">';
-	foreach ($array as $row) {   
+	foreach ($array as $row) {
 		$total = $row['quantity'] * $row['price'];
 		$amount += $total;
 		$quantity += $row['quantity'];
@@ -102,12 +102,12 @@ if (($show == 'DOCS') && ($feed != '')) {
 		$quantity = $option['quantity'];
 		$groupArray[$ship][$variant] = $quantity;
 	}
-	foreach ($groupArray as $ship => $variants) {		
+	foreach ($groupArray as $ship => $variants) {
 		echo '<li class="ship" style="background-image: url(img/ships/' .ship_css($ship). '.jpg)">';
 		echo '<div class="overlay"></div>';
 		echo '<div class="title">';
 		if (array_keys($variants)[0] != "NONE") {
-			echo '<div class="info"></div>';	
+			echo '<div class="info"></div>';
 			echo '<ul id="variants">';
 		}
 		$quantity_total = 0;
@@ -128,7 +128,7 @@ if (($show == 'DOCS') && ($feed != '')) {
 	}
 	echo '</ul>';
 } else if (($show == 'MYSQL') && ($host != '') && ($user != '') && ($pass != '') && ($db_name != '') && ($tbl_name != '')) {
-	$db = @new mysqli($host, $user, $pass, $db_name);	
+	$db = @new mysqli($host, $user, $pass, $db_name);
 	if (mysqli_connect_errno() == 0) {
 		echo '<ul id="ships">';
 		$check = 'SELECT * FROM `' .$tbl_name.'`';
@@ -152,8 +152,8 @@ if (($show == 'DOCS') && ($feed != '')) {
 				echo $txt_org. '<br />has <span class="ships">' .$row->quantity. '</span> ships and<br />pledged <span class="pledge">$' .number_format($row->amount). '</span>';
 				echo '</div>';
 				echo '</li>';
-			}	
-			while ($row = $ships->fetch_object()) {	
+			}
+			while ($row = $ships->fetch_object()) {
 				echo '<li class="ship" style="background-image: url(img/ships/' .ship_css($row->ship). '.jpg)">';
 				echo '<div class="overlay"></div>';
 				echo '<div class="title">';
@@ -161,7 +161,7 @@ if (($show == 'DOCS') && ($feed != '')) {
 				$variants = 'SELECT `variant`, `quantity` FROM `' .$tbl_name.'` WHERE `ship` = "' .$row->ship. '" AND `variant` != "NONE" ORDER BY `variant` ASC';
 				$variants = $db->query($variants);
 				if ($variants->num_rows >= 1) {
-					echo '<div class="info"></div>';		
+					echo '<div class="info"></div>';
 					echo '<ul id="variants">';
 					while ($row = $variants->fetch_object()) {
 						echo '<li>';
@@ -170,7 +170,7 @@ if (($show == 'DOCS') && ($feed != '')) {
 					}
 					echo '</ul>';
 				}
-				$variants->close();		
+				$variants->close();
 				echo '</div>';
 				echo '</li>';
 			}
