@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 require_once('config.php');
 function ship_css($ship_name) {
 	$ship_css = $ship_name;
