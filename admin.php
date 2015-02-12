@@ -60,7 +60,7 @@ if (($_REQUEST['key'] != '') && ($_REQUEST['key'] == $key)) {
 				$update = 'UPDATE `' .$tbl_name.'` SET `quantity` = ' .$_POST[quantity][$i]. ', `price` = ' .$_POST[price][$i]. ' WHERE `id` = ' .$_POST[id][$i]. '';
 				$update = $db->query($update);
 			}
-			echo '<meta http-equiv="refresh" content="0;URL=admin.php" />';
+			echo '<meta http-equiv="refresh" content="0;URL=admin.php?key=' .$key. '" />';
 		}
 		echo '</form>';
 	} else {
