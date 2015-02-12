@@ -18,7 +18,7 @@ require_once('config.php');
 if (($_REQUEST['key'] != '') && ($_REQUEST['key'] == $key)) {
 	$db = @new mysqli($host, $user, $pass, $db_name);
 	if (mysqli_connect_errno() == 0) {	
-		echo '<form method="post" action="admin.php">';
+		echo '<form method="post" action="admin.php?key=' .$key. '">';
 		$ships = 'SELECT `id`, `ship`, `quantity`, `price` FROM `' .$tbl_name.'` WHERE `quantity` != 0 GROUP BY `ship` ORDER BY `ship` ASC';
 		$ships = $db->query($ships);
 		echo '<table cellpadding="0" cellspacing="0">';
