@@ -17,7 +17,7 @@ require_once('config.php');
 <?php
 if (($_REQUEST['key'] != '') && ($_REQUEST['key'] == $key)) {
 	$db = @new mysqli($host, $user, $pass, $db_name);
-	if (mysqli_connect_errno() == 0) {	
+	if (mysqli_connect_errno() == 0) {
 		echo '<form method="post" action="admin.php?key=' .$key. '">';
 		$ships = 'SELECT `id`, `ship`, `quantity`, `price` FROM `' .$tbl_name.'` WHERE `quantity` != 0 GROUP BY `ship` ORDER BY `ship` ASC';
 		$ships = $db->query($ships);
@@ -57,7 +57,12 @@ if (($_REQUEST['key'] != '') && ($_REQUEST['key'] == $key)) {
 		echo '</table>';
 		if (isset($_POST['submit'])) {
 			for ($i=0; $i<count($_POST['id']); $i++) {
-				$update = 'UPDATE `' .$tbl_name.'` SET `quantity` = ' .$_POST[quantity][$i]. ', `price` = ' .$_POST[price][$i]. ' WHERE `id` = ' .$_POST[id][$i]. '';
+				if ($_POST['id'] == '0') {
+					$id = 'NULL';
+				} else {
+					$id = $_POST['id'];
+				}
+				$update = 'UPDATE `' .$tbl_name.'` SET `quantity` = ' .$_POST[quantity][$i]. ', `price` = ' .$_POST[price][$i]. ' WHERE `id` = ' .$id[$i]. '';
 				$update = $db->query($update);
 			}
 			echo '<meta http-equiv="refresh" content="0;URL=admin.php?key=' .$key. '" />';
