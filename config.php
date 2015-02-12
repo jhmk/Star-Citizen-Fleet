@@ -7,6 +7,8 @@ $feed = 'https://docs.google.com/spreadsheets/d/1Id-2M68il1YTRRLqAulvnNiHexgetKt
 
 /* Settings for MYSQL */
 
+$key = 'abc123'; /* Mini protection for backend */
+
 $host = 'localhost';
 $user = 'root';
 $pass = 'root';
