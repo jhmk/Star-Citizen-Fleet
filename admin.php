@@ -53,8 +53,8 @@ if (($_REQUEST['key'] != '') && ($_REQUEST['key'] == $key)) {
 			$variants->close();
 		}
 		$ships->close();
-		echo '<input id="submit" type="submit" name="submit" value="Update" />';
 		echo '</table>';
+		echo '<input id="submit" type="submit" name="submit" value="Update" />';
 		if (isset($_POST['submit'])) {
 			for ($i=0; $i<count($_POST['id']); $i++) {
 				if ($_POST['id'] == '0') {
