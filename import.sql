@@ -85,7 +85,7 @@ INSERT INTO `sc_fleet` (`id`, `ship`, `variant`, `quantity`, `price`) VALUES
 (44, 'Carrack', 'NONE', 2, 350),
 (45, 'Herald', 'NONE', 2, 85),
 (46, 'Hull C', 'NONE', 2, 0),
-(47, 'Orion', 'NONE', 2, 0),
+(47, 'Orion', 'NONE', 2, 325),
 (48, 'Reclaimer', 'NONE', 2, 350),
 (49, 'Javelin Destroyer', 'NONE', 2, 0);
 
