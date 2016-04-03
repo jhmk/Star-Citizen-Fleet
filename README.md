@@ -1,4 +1,4 @@
-
+![Alt text](/fleet.png?raw=true)
 
 
 # Star-Citizen-Fleet Squadron Edition
