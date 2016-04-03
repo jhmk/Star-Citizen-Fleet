@@ -1,8 +1,8 @@
-![Alt text](/fleet.png?raw=true)
-
-
 # Star-Citizen-Fleet Squadron Edition
 
+![Alt text](/fleet.png?raw=true)
+
+### Note
 This is a full changed Fork of the Star Citizen Fleet by Bergkuh (https://github.com/bergkuh/Star-Citizen-Fleet)
 
 ## Changes:
