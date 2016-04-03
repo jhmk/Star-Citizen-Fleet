@@ -1,0 +1,90 @@
+server {
+  listen 80 default_server;
+  server_name DOMAIN;
+
+  return 301 https://$server_name$request_uri;
+
+  root /usr/share/nginx;
+
+  index index.php index.html index.htm;
+
+  # static file 404's aren't logged and expires header is set to maximum age
+  location ~* \.(jpg|jpeg|gif|css|png|js|ico|html)$ {
+    access_log off;
+    expires max;
+  }
+
+  location ~ \.php$ {
+    include fastcgi_params;
+    fastcgi_intercept_errors on;
+    # By all means use a different server for the fcgi processes if you need to
+    fastcgi_pass unix:/var/run/php5-fpm.sock;
+            fastcgi_index index.php;
+fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    try_files $uri $uri/ =404;
+    autoindex on;
+  }
+
+  location ~ /\.ht {
+    deny  all;
+  }
+}
+
+##SSL
+# HTTPS server
+#
+server {
+	listen 443 ssl spdy default;
+	listen [::]:443 default_server ipv6only=on;
+
+	server_name DOMAIN;
+
+	root /usr/share/nginx;
+	index index.php index.html index.htm;
+
+	ssl on;
+	ssl_certificate /PATH;
+	ssl_certificate_key /PATH;
+
+	#Stapling
+	ssl_stapling on;
+  	ssl_stapling_verify on;
+	ssl_trusted_certificate /PATH;
+
+	resolver 8.8.8.8 [2001:4860:4860::8888] 8.8.4.4 valid=300s;
+  	resolver_timeout 10s;
+
+        #SPDY
+        spdy_headers_comp 0;
+
+        ssl_session_cache shared:SSL:10m;
+        ssl_session_timeout 5m;
+        add_header Strict-Transport-Security "max-age=31536000; includeSubdomains;preload;";
+        #Diffie-Hellmann
+        ssl_dhparam  /etc/nginx/dhparam/PATH;
+	ssl_ecdh_curve secp384r1;
+
+	server_tokens off;
+	ssl_protocols TLSv1.2;
+	ssl_ciphers "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256 EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH+aRSA+RC4 EECDH !aNULL !eNULL !LOW !3DES !MD5 !EXP !PSK !SRP !DSS !RC4 !AES128";
+	ssl_prefer_server_ciphers on;
+
+	#Password Protection
+	#location /sc-fleet/ {
+	#auth_basic "TEXT";
+	#auth_basic_user_file PATH-TO-PASSWD-FILE;
+	#}
+
+
+#PHP
+	location ~ \.php$ {
+		fastcgi_split_path_info ^(.+\.php)(/.+)$;
+	#With php5-fpm:
+		fastcgi_pass unix:/var/run/php5-fpm.sock;
+		fastcgi_index index.php;
+		include fastcgi_params;
+    		fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+    		fastcgi_read_timeout 300;
+	}
+
+}
