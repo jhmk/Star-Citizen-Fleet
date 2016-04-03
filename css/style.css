@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Electrolize);
+@import url(https://fonts.googleapis.com/css?family=Electrolize);
 
 html, body {
 	margin: 0 !important;
@@ -16,7 +16,43 @@ html, body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* Responsive Menu*/
+ul#menu {
+    padding: 10px;
+}
+
+ul#menu li {
+    display: inline;
+}
+
+ul#menu li a {
+    background-color: #1D4165;
+    color: white;
+    padding: 15px 40px;
+    text-decoration: none;
+    border-radius: 7px 7px 0 0;
+
+}
+
+ul#menu li a:hover {
+    background-color: #cc0000;
+}
+
 /* Frontend */
+#content {
+/* position: fixed; NO SCROLL BAR*/
+position: relative;
+margin: 0;
+padding: 0;
+font-family: 'Electrolize', sans-serif;
+font-size: 14px;
+width: 100%;
+height: 80%;
+border: 1px;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+}
 
 #fleet {
 	position: relative;
@@ -24,7 +60,10 @@ html, body {
 	padding: 0;
 	font-family: 'Electrolize', sans-serif;
 	font-size: 14px;
-	line-height: 16px;
+/*
+	line-height: 14px;
+*/
+	line-height: 54px;
 }
 
 ul, li {
@@ -61,8 +100,8 @@ ul, li {
 	float: left;
 	position: relative;
 	margin: 10px;
-	width: 300px;
-	height: 105px;
+	width: 426px;
+	height: 160px;
 	background-color: #022d40;
 	background-position: center center;
 	background-repeat: no-repeat;
@@ -75,8 +114,8 @@ ul, li {
 }
 
 #ships li.ship .overlay {
-	width: 300px;
-	height: 105px;
+	width: 426px;
+	height: 160px;
 	background: transparent url('../img/bg_ship-overlay.png') top left repeat;
 }
 
@@ -84,8 +123,8 @@ ul, li {
 	position: absolute;
 	top: 0;
 	left: 0;
-	padding: 46px 0 0 20px;
-	width: 280px;
+	padding: 46px 0 0 10px;
+	width: 426px;
 	height: 59px;
 	font-size: 18px;
 	color: #c1eefe;
@@ -95,13 +134,13 @@ ul, li {
 }
 
 #ships li.ship.overall {
-	background-image: url('../img/bg_overall.jpg');
+	background-image:  url('../img/');
 }
 
 #ships li.ship.overall .title {
 	padding: 18px 0 0 0;
-	width: 300px;
-	height: 87px;
+	width: 426px;
+	height: 160px;
 	line-height: 24px;
 	text-align: center;
 	background: none;
@@ -123,7 +162,7 @@ ul, li {
 
 #ships li.ship .info {
 	position: absolute;
-	top: 35px;
+	top: 55px;
 	right: 0;
 	width: 55px;
 	height: 35px;
@@ -137,8 +176,9 @@ ul, li {
 	right: 0;
 	padding: 9px 15px;
 	width: 50%;
-	height: 87px;
-	font-size: 14px;
+	height: 160px;
+	line-height: 14px;
+	font-size: 11px;
 	color: #6fd8ff;
 	list-style: none;
 	background-color: rgba(0, 12, 19, .8);
@@ -262,4 +302,39 @@ ul, li {
 	background-image: -webkit-linear-gradient(bottom, #00CC00 0%, #006600 100%);
 	background-image: -ms-linear-gradient(bottom, #00CC00 0%, #006600 100%);
 	background-image: linear-gradient(to bottom, #00CC00 0%, #006600 100%);
+}
+
+
+/* Menubar */
+
+@import url(https://fonts.googleapis.com/css?family=Electrolize);
+
+#NavStrip {
+  position: relative;
+  display: block;
+  list-style-type: none;
+  margin:0;
+  padding:0;
+  background-color: #022d40;
+font-size:18px;
+  font-family: 'Electrolize', sans-serif;
+}
+
+#NavStrip ul{text-align:center;}
+#NavStrip li {display: inline-block; background-color: #022d40;border-radius:;width:20%;list-style:none;color:white;}
+#NavStrip li a {display:block;padding: 15px;text-decoration:none;color:white;-webkit-transition: 0.5s;-moz-transition: 0.5s;-o-transition: 0.5s;-ms-transition: 0.5s;transition: 0.5s;}
+#NavStrip li a:hover {color: #fff;text-shadow: -1px 1px 5px #20c1EA, 1px -1px 5px #20c1EA;background-color: #6CB7D7;}
+#NavStrip ul, li {padding:0px;}
+
+#NavStrip label {display: none;}
+#menu-toggle {
+  display: none; /* hide the checkbox */}
+
+@media all and (max-width: 700px) and (min-width: 0px) {
+  #NavStrip {text-align:right;}
+  #NavStrip label {display: block;height:30px;width:30px;line-height:30px;text-align:center;color:white;background-color: #022d40; cursor:pointer;}
+  #NavStrip #nav {display: none;}
+  #NavStrip li {width: 100%;border:0px;}
+  #menu-toggle:checked + #nav {display: block;}
+  #NavStrip label:active #nav {display: none;}
 }
