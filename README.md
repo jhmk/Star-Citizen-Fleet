@@ -13,6 +13,7 @@ This is a full changed Fork of the Star Citizen Fleet by Bergkuh (https://github
 - Responive & Burger Menu
 - detail view of the ship list in the website itself
 - removed MySQL feature (will be added on another Fork later)
+- fixed a sorting bug
 - lot more stuff
 
 
